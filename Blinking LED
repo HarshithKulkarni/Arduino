@@ -1,0 +1,44 @@
+int red_led_pin=13;
+int blue_led_pin=11;
+int blink_time;
+int blink_number;
+void setup() {
+  pinMode(red_led_pin,OUTPUT);
+  pinMode(blue_led_pin,OUTPUT);
+  Serial.begin(9600);
+  Serial.println("ENTER THE NUMBER OF TIMES THAT PIN 10 LED SHOULD BLINK");
+  while (Serial.available()==0){  }
+  blink_number=Serial.parseInt();
+    Serial.println("ENTER THE NUMBER OF TIMES THAT PIN 11 LED SHOULD BLINK");
+  while (Serial.available()==0){  }
+  blink_number=Serial.parseInt();
+  Serial.println("ENTER THE BLINK TIME (in milli seconds)");
+  while (Serial.available()==0){}
+  blink_time=Serial.parseInt();
+
+}
+
+void loop() {
+ Serial.println(" ");
+  for(int h=1; h<=blink_number; h++)
+  {
+    Serial.println(h);
+    
+    digitalWrite(red_led_pin,HIGH);
+    delay(blink_time);
+    digitalWrite(red_led_pin,LOW);
+    delay(blink_time);
+ 
+  }
+  Serial.println(" ");
+  for(int k=1; k<=blink_number; k++)
+  {
+    Serial.println(k);
+    
+    digitalWrite( blue_led_pin,HIGH);
+    delay(blink_time);
+    digitalWrite(blue_led_pin,LOW);
+    delay(blink_time);
+     
+  }
+}
